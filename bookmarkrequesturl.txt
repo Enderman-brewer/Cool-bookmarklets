@@ -1,0 +1,1 @@
+Morsecode:https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/Morse-On-Any-Site.js
