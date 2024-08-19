@@ -11,3 +11,5 @@ Here's how you do it:
 3. Go to any website
 4. Click the bookmark
 5. Press `ESC` to deload the game/bookmarklet, or refresh the site to revert to the original site.
+
+If you wish, feel free to import my [modloader](/modloader.js) for my up to date mods.
