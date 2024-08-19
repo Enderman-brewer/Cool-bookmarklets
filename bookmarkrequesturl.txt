@@ -1,4 +1,4 @@
-Morsecode <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/Morse-On-Any-Site.js
+Morsecode v4.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/Morse-On-Any-Site.js
 KickAss <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/kickass.js
 CookieClicker <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/cookie-clicker-basic-mod.js
-PlsHide temptest <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshide.js
+PlsHide v2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshide.js
