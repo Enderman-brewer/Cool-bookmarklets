@@ -1,6 +1,6 @@
 javascript:(function() {
     var raw_request_url = "https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/bookmarkrequesturl.txt";
-    
+    console.log("Loading mods")
     function createUI(mods) {
         const ui = document.createElement('div');
         ui.style.position = 'fixed';
