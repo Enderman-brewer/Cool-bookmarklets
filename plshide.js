@@ -8,6 +8,7 @@
     overlay.style.height = '100%';
     overlay.style.backgroundColor = 'white';
     overlay.style.opacity = '0'; // Invisible by default
+    overlay.style.pointerEvents = 'none'; // Prevent clicking on the element
     overlay.style.transition = 'opacity 0.3s'; // Smooth transition for visibility change
     document.body.appendChild(overlay);
 
