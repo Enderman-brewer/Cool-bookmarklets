@@ -1,32 +1,35 @@
 (function() {
-    // Create the element
+    // Create the overlay element
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
     overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
+    overlay.style.width = '100vw'; // Ensure it covers the viewport width
+    overlay.style.height = '100vh'; // Ensure it covers the viewport height
     overlay.style.backgroundColor = 'white';
-    overlay.style.opacity = '0'; // Invisible by default
-    overlay.style.pointerEvents = 'none'; // Prevent clicking on the element
+    overlay.style.opacity = '0'; // Start as invisible
+    overlay.style.pointerEvents = 'none'; // Prevent interaction
+    overlay.style.zIndex = '9999'; // Ensure it appears on top of other elements
     overlay.style.transition = 'opacity 0.3s'; // Smooth transition for visibility change
+
+    // Append the overlay to the body
     document.body.appendChild(overlay);
 
-    // Function to handle keydown events
+    // Handle keydown events
     function handleKeyDown(event) {
         if (event.shiftKey) {
-            overlay.style.opacity = '1'; // Make the element fully visible
+            overlay.style.opacity = '1'; // Show the overlay
         }
     }
 
-    // Function to handle keyup events
+    // Handle keyup events
     function handleKeyUp(event) {
         if (!event.shiftKey) {
-            overlay.style.opacity = '0'; // Make the element invisible
+            overlay.style.opacity = '0'; // Hide the overlay
         }
     }
 
-    // Attach event listeners
+    // Add event listeners
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
 })();
