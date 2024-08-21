@@ -1,15 +1,5 @@
 javascript:(function() {
-    // Make everything editable
-    document.body.contentEditable = true;
-
-    // Disable all existing click events on the page temporarily
-    const disableClickEvents = function(event) {
-        event.stopPropagation();
-        event.preventDefault();
-    };
-    document.addEventListener('click', disableClickEvents, true);
-
-    // Create a toolbar
+    // Create a toolbar that will NOT be editable
     const toolbar = document.createElement('div');
     toolbar.style.position = 'fixed';
     toolbar.style.top = '10px';
@@ -18,6 +8,7 @@ javascript:(function() {
     toolbar.style.padding = '10px';
     toolbar.style.border = '1px solid black';
     toolbar.style.zIndex = 10000;
+    toolbar.contentEditable = false; // Prevent the toolbar itself from being editable
 
     // Font size input
     const fontSizeLabel = document.createElement('label');
@@ -112,6 +103,10 @@ javascript:(function() {
     // Append toolbar to body
     document.body.appendChild(toolbar);
 
+    // Make everything but the toolbar editable
+    document.body.contentEditable = true;
+    toolbar.contentEditable = false; // Ensure toolbar remains uneditable
+
     // Add resizing support to any existing images
     addImageResizeSupport();
 
@@ -120,7 +115,6 @@ javascript:(function() {
         if (event.key === 'Escape') {
             document.body.contentEditable = false;
             toolbar.remove();
-            document.removeEventListener('click', disableClickEvents, true); // Re-enable clicks on the site
             const images = document.querySelectorAll('img');
             images.forEach(img => {
                 img.style.resize = '';
