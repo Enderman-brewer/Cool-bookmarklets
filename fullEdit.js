@@ -2,6 +2,13 @@ javascript:(function() {
     // Make everything editable
     document.body.contentEditable = true;
 
+    // Disable all existing click events on the page temporarily
+    const disableClickEvents = function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+    };
+    document.addEventListener('click', disableClickEvents, true);
+
     // Create a toolbar
     const toolbar = document.createElement('div');
     toolbar.style.position = 'fixed';
@@ -82,10 +89,12 @@ javascript:(function() {
             img.style.resize = 'both';
             img.style.overflow = 'auto';
             img.style.cursor = 'nwse-resize';
-            img.addEventListener('mousedown', function() {
+            img.addEventListener('mousedown', function(event) {
+                event.stopPropagation(); // Prevent the site's click events
                 img.style.outline = '2px dashed red'; // Highlight selected image
             });
-            img.addEventListener('mouseup', function() {
+            img.addEventListener('mouseup', function(event) {
+                event.stopPropagation(); // Prevent the site's click events
                 img.style.outline = 'none'; // Remove highlight
             });
         });
@@ -111,6 +120,7 @@ javascript:(function() {
         if (event.key === 'Escape') {
             document.body.contentEditable = false;
             toolbar.remove();
+            document.removeEventListener('click', disableClickEvents, true); // Re-enable clicks on the site
             const images = document.querySelectorAll('img');
             images.forEach(img => {
                 img.style.resize = '';
