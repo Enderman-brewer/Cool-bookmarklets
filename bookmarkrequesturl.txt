@@ -3,3 +3,4 @@ Kick Ass <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/
 Cookie Clicker Mod <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/cookie-clicker-basic-mod.js
 PlsHide v2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshide.js
 Raw View v12.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/Raw-view.js
+Raw View v2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/fullEdit.js
