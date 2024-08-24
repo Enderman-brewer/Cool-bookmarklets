@@ -5,3 +5,4 @@ PlsHide v2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklet
 Raw View v12.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/Raw-view.js
 Full Edit v2.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/fullEdit.js
 Send To AI v9 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/SendToAI
+Modloader v1 <all> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloader.js
