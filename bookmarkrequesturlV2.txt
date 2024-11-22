@@ -2,6 +2,7 @@ Morse code on any site v4.2 <> https://raw.githubusercontent.com/Enderman-brewer
 Kick Ass <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/kickass.js
 Cookie Clicker Mod <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/cookie-clicker-basic-mod.js
 PlsHide v2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshide.js
+PlsHide v3 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshideV2.js
 Raw View v12.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/Raw-view.js
 Full Edit v2.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/fullEdit.js
 Send To AI v9 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/SendToAI.js
