@@ -7,4 +7,5 @@ Raw View v12.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmar
 Full Edit v2.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/fullEdit.js
 Send To AI v9 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/SendToAI.js
 Tinyurl <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/tinyurl.js
+DEEP FRIED <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/DEEPFRIED.js
 Modloader v1 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloader.js
