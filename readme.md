@@ -32,7 +32,7 @@ You can even use it for fun.
 
 
 Here's how you do it:
-1. Paste the contents of any of these files, such as the previously advertised [modloaderV2.js](/modloaderV2.js) to [this site using default settings](https://chriszarate.github.io/bookmarkleter/)
+1. Paste the contents of any of these files, such as the previously advertised [modloaderV3.js](/modloaderV3.js) to [this site using default settings](https://chriszarate.github.io/bookmarkleter/)
 2. Create the bookmarklet and put it in your bookmark bar
 3. Go to any website
 4. Click the bookmark
