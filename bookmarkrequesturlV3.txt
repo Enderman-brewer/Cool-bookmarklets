@@ -6,4 +6,5 @@ Send To AI v10 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmar
 Tinyurl <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/tinyurl.js
 DEEP FRIED <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/DEEPFRIED.js
 Audio Visuliser <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/AudioVisuliser.js
+Page Scrape <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/PageScrape.js
 Modloader v2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloaderV2.js
