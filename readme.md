@@ -9,16 +9,16 @@ Key Features:
  * Mod Management: Select and load only the mods you need, directly from trusted sources, without any unnecessary steps.
  * Automatic Updates: Always up to date with the latest versions of mods, thanks to seamless fetching of mod lists.
 How It Works:
- * The Mod Loader fetches a list of available mods from a trusted source.
- * It displays them in a user-friendly interface, allowing you to select mods using checkboxes.
- * Once you've chosen your mods, click the “Load Selected Mods” button, and the tool will fetch and load them into your browser automatically.
- * Conflict warnings will appear next to mods that may cause issues with others.
- * Enjoy your mods without needing to manually install or manage them!
+   * The Mod Loader fetches a list of available mods from a trusted source.
+   * It displays them in a user-friendly interface, allowing you to select mods using checkboxes.
+   * Once you've chosen your mods, click the “Load Selected Mods” button, and the tool will fetch and load them into your browser automatically.
+   * Conflict warnings will appear next to mods that may cause issues with others.
+   * Enjoy your mods without needing to manually install or manage them!
  * Why You Should Use Mod Loader:
- * Free & Open Source: No cost, no hidden fees, just an easy-to-use tool for everyone.
- * No Technical Skills Required: Anyone can use it, from beginners to experienced users.
- * Safe and Secure: Mods are sourced from trusted URLs and can be read by the standard user, with the format ```Bookmarklet name <> url.com```
- * Old versions do not get removed, but instead archived, while the modloader no longer can get updated mods, you can still inject the updated or legacy modloader as a mod itself.
+   * Free & Open Source: No cost, no hidden fees, just an easy-to-use tool for everyone.
+   * No Technical Skills Required: Anyone can use it, from beginners to experienced users.
+   * Safe and Secure: Mods are sourced from trusted URLs and can be read by the standard user, with the format ```Bookmarklet name <> url.com```
+   * Old versions do not get removed, but instead archived, while the modloader no longer can get updated mods, you can still inject the updated or legacy modloader as a mod itself.
 
 Whether you're customizing a web app or enhancing your browser experience, the Mod Loader makes managing mods easier and more efficient than ever before.
 You can even use it for fun.
