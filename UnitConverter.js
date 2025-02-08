@@ -13,7 +13,9 @@ const conversionRates = {
     "banana": 0.18,         // 1 banana = 0.18 metres
     "doubleDeckerBus": 4.38, // 1 double-decker bus = 4.38 metres
     "footballField": 100,   // 1 football field = 100 metres
-    "lightYear": 9.461e15   // 1 light-year = 9.461 × 10^15 metres
+    "lightYear": 9.461e15,   // 1 light-year = 9.461 × 10^15 metres
+    "doorheight": 2.04, 
+    "PopCornSets": 0.4
 };
 
 
