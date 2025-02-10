@@ -1,0 +1,25 @@
+(function() {
+    const maxLength = 2048; // Set a reasonable character limit
+    let userQuery = prompt("Enter your question:");
+    if (!userQuery) return;
+    
+    // Get multiple elements from the page
+    let pageTitle = document.title || "";
+    let pageUrl = window.location.href || "";
+    let metaDesc = document.querySelector('meta[na@me="description"]')?.content || "";
+    let headings = Array.from(document.querySelectorAll('h1, h2, h3')).map(h => h.innerText).join(" ") || "";
+    let bodyText = document.body.innerText.substring(0, 1400) || ""; // Adjust to fit URL
+    
+    // Construct the query with extracted page details
+    let searchQuery = `${userQuery} ${pageTitle} ${pageUrl} ${metaDesc} ${headings} ${bodyText}`.trim();
+    
+    // Ensure the full URL stays within the limit
+    let baseUrl = "https://chatgpt.com/search?q=";
+    let maxQueryLength = maxLength - baseUrl.length;
+    if (searchQuery.length > maxQueryLength) {
+        searchQuery = searchQuery.substring(0, maxQueryLength);
+    }
+    
+    // Open ChatGPT search in a new tab
+    window.open(`${baseUrl}${encodeURIComponent(searchQuery)}`, "_blank");
+})();
