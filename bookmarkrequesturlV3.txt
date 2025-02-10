@@ -2,7 +2,7 @@ PlsHide v2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklet
 PlsHide v3 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshideV2.js
 Raw View v12.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/Raw-view.js
 Full Edit v2.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/fullEdit.js
-Send To AI v10 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/SendToAIv2.js
+Send To AI v11 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/SendToAiVmodloadersaid11js
 Tinyurl <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/tinyurl.js
 DEEP FRIED <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/DEEPFRIED.js
 Audio Visuliser <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/AudioVisuliser.js
