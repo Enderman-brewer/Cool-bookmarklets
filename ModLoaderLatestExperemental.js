@@ -2,7 +2,7 @@
   "use strict";
 
   const modListUrl =
-    "https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/bookmarkrequesturlV3.txt";
+    "https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/bookmarkrequesturlV4.txt";
 
   // ─── NOTIFICATION SYSTEM ─────────────────────────────────────────────
   const notifications = [];
