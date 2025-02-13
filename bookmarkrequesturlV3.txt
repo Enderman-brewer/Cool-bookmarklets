@@ -9,3 +9,4 @@ Audio Visuliser <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookma
 Page Scrape <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/PageScrape.js
 Unit Converter V1.what <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/UnitConverter.js
 Modloader v2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloaderV2.js
+Modloader v4 (beta) <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/ModLoaderLatestExperemental.js
