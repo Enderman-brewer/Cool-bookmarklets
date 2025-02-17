@@ -15,7 +15,7 @@ const conversionRates = {
     "footballField": 100,   // 1 football field = 100 metres
     "lightYear": 9.461e15,   // 1 light-year = 9.461 × 10^15 metres
     "doorheight": 2.04, 
-    "PopCornSets": 0.4
+    "PopCornSets": 0.4,
     "KateMetre": 0.656
 };
 
