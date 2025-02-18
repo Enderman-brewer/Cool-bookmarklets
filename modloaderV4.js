@@ -7,14 +7,11 @@
   // ─── NOTIFICATION SYSTEM ─────────────────────────────────────────────
   const notifications = [];
   let notificationActive = false;
-  // Modified showNotification to accept an extra "immediate" parameter.
+
   function showNotification(message, isError = false, duration = 1000, immediate = false) {
     if (immediate) {
-      // Immediately remove any currently displayed notifications.
-      document.querySelectorAll('.mod-loader-notification').forEach((n) => n.remove());
-      // Clear the notification queue.
+      document.querySelectorAll(".mod-loader-notification").forEach((n) => n.remove());
       notifications.length = 0;
-      // Create and display the notification immediately (no fade-out).
       const notif = document.createElement("div");
       notif.className = "mod-loader-notification";
       notif.style.cssText = `
@@ -39,6 +36,7 @@
       if (!notificationActive) displayNextNotification();
     }
   }
+
   function displayNextNotification() {
     if (notifications.length === 0) {
       notificationActive = false;
@@ -67,7 +65,9 @@
     setTimeout(() => {
       notif.style.opacity = "0";
       setTimeout(() => {
-        notif.parentNode && notif.parentNode.removeChild(notif);
+        if (notif.parentNode) {
+          notif.parentNode.removeChild(notif);
+        }
         displayNextNotification();
       }, 300);
     }, duration);
@@ -78,6 +78,7 @@
     let isDragging = false,
       offsetX = 0,
       offsetY = 0;
+
     handle.style.cursor = "move";
     handle.addEventListener("mousedown", (e) => {
       isDragging = true;
@@ -86,6 +87,7 @@
       offsetY = e.clientY - rect.top;
       e.preventDefault();
     });
+
     document.addEventListener("mousemove", (e) => {
       if (isDragging) {
         el.style.left = `${e.clientX - offsetX}px`;
@@ -93,6 +95,7 @@
         el.style.right = "auto";
       }
     });
+
     document.addEventListener("mouseup", () => {
       isDragging = false;
     });
@@ -106,6 +109,7 @@
       { position: "bottom-left", cursor: "nesw-resize" },
       { position: "bottom-right", cursor: "nwse-resize" },
     ];
+
     handles.forEach((handleInfo) => {
       const handle = document.createElement("div");
       handle.className = `resize-handle ${handleInfo.position}`;
@@ -130,10 +134,13 @@
         handle.style.bottom = "0";
         handle.style.right = "0";
       }
+
       container.appendChild(handle);
+
       handle.addEventListener("mousedown", function (e) {
         e.stopPropagation();
         e.preventDefault();
+
         const startX = e.clientX;
         const startY = e.clientY;
         const rect = container.getBoundingClientRect();
@@ -141,6 +148,7 @@
         const startHeight = rect.height;
         const startLeft = rect.left;
         const startTop = rect.top;
+
         function onMouseMove(e) {
           const dx = e.clientX - startX;
           const dy = e.clientY - startY;
@@ -148,6 +156,7 @@
             newHeight = startHeight,
             newLeft = startLeft,
             newTop = startTop;
+
           if (handleInfo.position.indexOf("right") !== -1) {
             newWidth = startWidth + dx;
           }
@@ -162,17 +171,21 @@
             newHeight = startHeight - dy;
             newTop = startTop + dy;
           }
+
           newWidth = Math.max(newWidth, 150);
           newHeight = Math.max(newHeight, 150);
+
           container.style.width = newWidth + "px";
           container.style.height = newHeight + "px";
           container.style.left = newLeft + "px";
           container.style.top = newTop + "px";
         }
+
         function onMouseUp() {
           document.removeEventListener("mousemove", onMouseMove);
           document.removeEventListener("mouseup", onMouseUp);
         }
+
         document.addEventListener("mousemove", onMouseMove);
         document.addEventListener("mouseup", onMouseUp);
       });
@@ -180,11 +193,10 @@
   }
 
   // ─── TAG PARSER ───────────────────────────────────────────────────────
-  // Expects a tag string like:
-  // <"conflict"="SimpleMod","OtherMod";"tag"="AdvancedMod";"log"="1.5";"allowinterupt"="true","2">
+  // Parses tag strings like:
+  // <"conflict"="PlsHide v3";"tag"="SomeTag";"log"="1.5";"allowinterupt"="true","2">
   function parseTags(tagString) {
     const tags = {};
-    // Remove the wrapping < and >
     if (tagString.startsWith("<") && tagString.endsWith(">")) {
       tagString = tagString.substring(1, tagString.length - 1);
     }
@@ -196,19 +208,18 @@
       if (equalIndex === -1) return;
       let key = pair.substring(0, equalIndex).trim();
       let valuePart = pair.substring(equalIndex + 1).trim();
-      if (key.startsWith("\"") && key.endsWith("\"")) {
+      if (key.startsWith('"') && key.endsWith('"')) {
         key = key.substring(1, key.length - 1);
       }
       const values = [];
       const rawValues = valuePart.split(",");
       rawValues.forEach((val) => {
         val = val.trim();
-        if (val.startsWith("\"") && val.endsWith("\"")) {
+        if (val.startsWith('"') && val.endsWith('"')) {
           val = val.substring(1, val.length - 1);
         }
         if (val) values.push(val);
       });
-      // For the "tag" key, accept only the first value.
       if (key === "tag") {
         tags[key] = values[0] || null;
       } else {
@@ -219,21 +230,29 @@
   }
 
   // ─── CONFLICT HANDLING ────────────────────────────────────────────────
-  // Each mod object may have:
-  //   - order: its position (starting at 1)
-  //   - conflicts: an array of tokens (number-as-string or text)
-  //   - tag: a unique identifier (if provided)
+  // Checks if modA and modB conflict based on conflict tokens.
+  // For non-numeric conflict tokens, compares against the mod's name (ignoring case and whitespace).
   function checkConflict(modA, modB) {
     if (modA.conflicts) {
       for (const conf of modA.conflicts) {
-        if (!isNaN(Number(conf)) && Number(conf) === modB.order) return true;
-        if (isNaN(Number(conf)) && modB.tag && conf === modB.tag) return true;
+        if (!isNaN(Number(conf)) && Number(conf) === modB.order) {
+          return true;
+        } else if (typeof conf === "string" && conf.trim() !== "") {
+          const conflictKey = conf.toLowerCase().replace(/\s+/g, "");
+          const modNameKey = modB.name.toLowerCase().replace(/\s+/g, "");
+          if (conflictKey === modNameKey) return true;
+        }
       }
     }
     if (modB.conflicts) {
       for (const conf of modB.conflicts) {
-        if (!isNaN(Number(conf)) && Number(conf) === modA.order) return true;
-        if (isNaN(Number(conf)) && modA.tag && conf === modA.tag) return true;
+        if (!isNaN(Number(conf)) && Number(conf) === modA.order) {
+          return true;
+        } else if (typeof conf === "string" && conf.trim() !== "") {
+          const conflictKey = conf.toLowerCase().replace(/\s+/g, "");
+          const modNameKey = modA.name.toLowerCase().replace(/\s+/g, "");
+          if (conflictKey === modNameKey) return true;
+        }
       }
     }
     return false;
@@ -291,7 +310,7 @@
     titleBar.appendChild(closeButton);
     container.appendChild(titleBar);
 
-    // Display the request URL as provided
+    // Request URL display
     const requestUrlDisplay = document.createElement("p");
     requestUrlDisplay.textContent = "Request URL: " + modListUrl;
     requestUrlDisplay.style.cssText =
@@ -312,19 +331,19 @@
     `;
     container.appendChild(filterInput);
 
-    // Container for the mod list
+    // Container for mod list
     const modsListContainer = document.createElement("div");
     container.appendChild(modsListContainer);
 
-    // Array to store checkboxes for conflict handling
+    // Array for checkboxes (used in conflict handling)
     const checkboxes = [];
 
+    // Render mod items
     function renderModItems(filterText = "") {
       modsListContainer.innerHTML = "";
       const lowerFilter = filterText.toLowerCase();
       mods.forEach((mod, index) => {
         if (mod.name.toLowerCase().includes(lowerFilter)) {
-          // Set order (starting from 1)
           mod.order = index + 1;
           const modItemLabel = document.createElement("label");
           modItemLabel.style.cssText = `
@@ -337,16 +356,16 @@
           checkbox.type = "checkbox";
           checkbox.value = mod.url;
           checkbox.style.marginRight = "5px";
-          // Store mod data on the checkbox for later conflict checks.
           checkbox.modData = mod;
           modItemLabel.appendChild(checkbox);
+
           const textSpan = document.createElement("span");
           textSpan.textContent = mod.name;
-          if (mod.conflicts && mod.conflicts.length > 0) {
-            textSpan.style.color = "red";
-            textSpan.textContent += " (Conflicts: " + mod.conflicts.join(", ") + ")";
-          }
           modItemLabel.appendChild(textSpan);
+
+          // Save reference for later updates
+          checkbox.textSpan = textSpan;
+
           modsListContainer.appendChild(modItemLabel);
           checkboxes.push(checkbox);
           checkbox.addEventListener("change", recalcConflicts);
@@ -354,20 +373,31 @@
       });
     }
 
+    // Recalculate conflicts and update checkboxes
     function recalcConflicts() {
       checkboxes.forEach((cb) => {
         if (!cb.checked) {
-          let conflictFound = false;
+          let conflicts = [];
           checkboxes.forEach((otherCb) => {
-            if (otherCb.checked && otherCb !== cb) {
-              if (checkConflict(otherCb.modData, cb.modData)) {
-                conflictFound = true;
-              }
+            if (
+              otherCb.checked &&
+              otherCb !== cb &&
+              checkConflict(otherCb.modData, cb.modData)
+            ) {
+              conflicts.push(otherCb.modData.name);
             }
           });
-          cb.disabled = conflictFound;
+          if (conflicts.length > 0) {
+            cb.disabled = true;
+            cb.textSpan.textContent =
+              cb.modData.name + " (Conflicts with: " + conflicts.join(", ") + ")";
+          } else {
+            cb.disabled = false;
+            cb.textSpan.textContent = cb.modData.name;
+          }
         } else {
           cb.disabled = false;
+          cb.textSpan.textContent = cb.modData.name;
         }
       });
     }
@@ -378,7 +408,7 @@
       recalcConflicts();
     });
 
-    // Load button – on click, deload the UI then load each selected mod.
+    // Load button – on click, the UI fades out and selected mods are loaded.
     const loadButton = document.createElement("button");
     loadButton.textContent = "Load Selected Mods";
     loadButton.style.cssText = `
@@ -393,15 +423,12 @@
       width: 100%;
     `;
     loadButton.addEventListener("click", async () => {
-      // Deload the mod loader UI immediately.
       container.style.opacity = "0";
       setTimeout(() => container.remove(), 100);
-      // Load each selected mod.
       const selectedCheckboxes = checkboxes.filter((cb) => cb.checked);
       for (const checkbox of selectedCheckboxes) {
         const modData = checkbox.modData;
-        // Determine logging settings from tags.
-        let logDuration = 1000; // default duration in ms.
+        let logDuration = 1000;
         let allowInterupt = false;
         if (modData.log) {
           if (modData.log[0] === "off") {
@@ -409,12 +436,11 @@
           } else {
             let t = parseFloat(modData.log[0]);
             if (isNaN(t)) t = 1;
-            if (t === 0) t = 1; // "0 is normal"
+            if (t === 0) t = 1;
             logDuration = t * 1000;
           }
         }
         if (modData.allowinterupt) {
-          // Expect a second value.
           allowInterupt = true;
           if (modData.allowinterupt.length > 1) {
             let interruptTime = parseFloat(modData.allowinterupt[1]);
@@ -434,18 +460,12 @@
           const scriptContent = await response.text();
           const scriptEl = document.createElement("script");
           scriptEl.textContent = scriptContent;
-          // Attach an error handler that logs using console.log, warn and error.
           scriptEl.onerror = function (e) {
             console.log("Mod script error logged:", e);
             console.warn("Mod script warning:", e);
             console.error("Mod script error:", e);
             if (logDuration !== null) {
-              showNotification(
-                `Error in script: ${checkbox.value}`,
-                true,
-                logDuration,
-                allowInterupt
-              );
+              showNotification(`Error in script: ${checkbox.value}`, true, logDuration, allowInterupt);
             }
           };
           document.body.appendChild(scriptEl);
@@ -486,7 +506,7 @@
   }
 
   // ─── MAIN ENTRY POINT ─────────────────────────────────────────────────
-  (async function () {
+  async function main() {
     showNotification("Loading Mods...");
     const modListText = await fetchModList(modListUrl);
     if (!modListText) return;
@@ -496,7 +516,6 @@
       const trimmed = line.trim();
       if (!trimmed) return;
       let modObj = null;
-      // Check for simple format (contains "<>")
       if (trimmed.includes("<>")) {
         const parts = trimmed.split("<>");
         if (parts.length >= 2) {
@@ -504,9 +523,7 @@
           const modUrl = parts[1].trim();
           modObj = { name: modName, url: modUrl, conflicts: [], tag: null };
         }
-      }
-      // Else, assume event tag format: modname <event tags> url
-      else if (trimmed.includes("<") && trimmed.includes(">")) {
+      } else if (trimmed.includes("<") && trimmed.includes(">")) {
         const firstAngle = trimmed.indexOf("<");
         const lastAngle = trimmed.indexOf(">");
         if (firstAngle !== -1 && lastAngle !== -1 && lastAngle > firstAngle) {
@@ -546,5 +563,12 @@
       console.error("No valid mods found.");
       showNotification("No valid mods found.", true);
     }
-  })();
+  }
+
+  // Run as soon as possible.
+  if (document.body) {
+    main();
+  } else {
+    document.addEventListener("DOMContentLoaded", main);
+  }
 })();
