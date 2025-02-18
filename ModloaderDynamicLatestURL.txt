@@ -1,0 +1,1 @@
+Modloader v4 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloaderV4.js
