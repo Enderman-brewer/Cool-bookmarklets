@@ -1,5 +1,5 @@
-PlsHide v2 <"conflict"="plshidev3";"tag"="hide2"> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshide.js
-PlsHide v3 <"conflict"="plshidev2";"tag"="hide3"> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshideV2.js
+PlsHide v2 <"conflict"="hide3";"tag"="hide2"> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshide.js
+PlsHide v3 <"conflict"="hide2";"tag"="hide3"> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/plshideV2.js
 Raw View v12.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/Raw-view.js
 Full Edit v2.2 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/fullEdit.js
 Send To AI v11 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/SendToAiVmodloadersaid11js
