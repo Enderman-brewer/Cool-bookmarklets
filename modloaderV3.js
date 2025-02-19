@@ -149,7 +149,7 @@ mods.forEach(mod => {
       const checkboxes = ui.querySelectorAll('input[type="checkbox"]:checked');
       checkboxes.forEach(checkbox => {
         console.log(`Attempting to load: ${checkbox.value}`);
-        fetch(checkbox.value)
+        fetch(checkbox.value, { cache: "no-store" })
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -190,7 +190,7 @@ mods.forEach(mod => {
   function fetchModList() {
     console.log('Fetching mod list from:', raw_request_url);
     displayMessage('Fetching mod list...');
-    fetch(raw_request_url)
+    fetch(raw_request_url, { cache: "no-store" })
       .then(response => {
         if (!response.ok) {
           console.error('Failed to fetch:', response.statusText);
