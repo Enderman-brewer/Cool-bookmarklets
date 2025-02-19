@@ -453,7 +453,7 @@
           }
         }
         try {
-          const response = await fetch(checkbox.value);
+          const response = await fetch(checkbox.value, { cache: "no-store" });
           if (!response.ok) {
             throw new Error(`Network response was not ok for ${checkbox.value}`);
           }
@@ -491,7 +491,7 @@
   async function fetchModList(url) {
     try {
       showNotification("Fetching mod list...");
-      const response = await fetch(url);
+      const response = await fetch(url, { cache: "no-store" });
       if (!response.ok) {
         throw new Error(`Failed to fetch: ${response.statusText}`);
       }
