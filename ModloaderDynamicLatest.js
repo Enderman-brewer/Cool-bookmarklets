@@ -28,7 +28,7 @@
     }
 
     function loadMod(url) {
-        fetch(url).then(response => {
+        fetch(url, { cache: "no-store" }).then(response => {
             if (!response.ok) throw new Error("Failed to fetch " + url);
             return response.text();
         }).then(scriptContent => {
@@ -44,7 +44,7 @@
 
     function fetchAndLoadAllMods() {
         showMessage("Fetching mod list...");
-        fetch(MOD_LIST_URL).then(response => {
+        fetch(MOD_LIST_URL, { cache: "no-store" }).then(response => {
             if (!response.ok) throw new Error("Failed to fetch mod list");
             return response.text();
         }).then(data => {
