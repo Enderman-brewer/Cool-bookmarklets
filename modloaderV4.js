@@ -8,10 +8,20 @@
   const notifications = [];
   let notificationActive = false;
 
-  function showNotification(message, isError = false, duration = 1000, immediate = false) {
+  function showNotification(
+    message,
+    isError = false,
+    duration = 1000,
+    immediate = false
+  ) {
     if (immediate) {
-      document.querySelectorAll(".mod-loader-notification").forEach((n) => n.remove());
+      // Immediately remove any currently displayed notifications.
+      document.querySelectorAll(".mod-loader-notification").forEach((n) =>
+        n.remove()
+      );
+      // Clear the notification queue.
       notifications.length = 0;
+      // Create and display the notification immediately (no fade-out).
       const notif = document.createElement("div");
       notif.className = "mod-loader-notification";
       notif.style.cssText = `
@@ -193,8 +203,8 @@
   }
 
   // ─── TAG PARSER ───────────────────────────────────────────────────────
-  // Parses tag strings like:
-  // <"conflict"="PlsHide v3";"tag"="SomeTag";"log"="1.5";"allowinterupt"="true","2">
+  // Expects a tag string like:
+  // <"conflict"="SimpleMod","OtherMod";"tag"="AdvancedMod";"log"="1.5";"allowinterupt"="true","2">
   function parseTags(tagString) {
     const tags = {};
     if (tagString.startsWith("<") && tagString.endsWith(">")) {
@@ -230,17 +240,15 @@
   }
 
   // ─── CONFLICT HANDLING ────────────────────────────────────────────────
-  // Checks if modA and modB conflict based on conflict tokens.
-  // For non-numeric conflict tokens, compares against the mod's name (ignoring case and whitespace).
+  // Checks conflicts between modA and modB
   function checkConflict(modA, modB) {
     if (modA.conflicts) {
       for (const conf of modA.conflicts) {
         if (!isNaN(Number(conf)) && Number(conf) === modB.order) {
           return true;
-        } else if (typeof conf === "string" && conf.trim() !== "") {
-          const conflictKey = conf.toLowerCase().replace(/\s+/g, "");
-          const modNameKey = modB.name.toLowerCase().replace(/\s+/g, "");
-          if (conflictKey === modNameKey) return true;
+        }
+        if (isNaN(Number(conf)) && modB.tag && conf === modB.tag) {
+          return true;
         }
       }
     }
@@ -248,10 +256,9 @@
       for (const conf of modB.conflicts) {
         if (!isNaN(Number(conf)) && Number(conf) === modA.order) {
           return true;
-        } else if (typeof conf === "string" && conf.trim() !== "") {
-          const conflictKey = conf.toLowerCase().replace(/\s+/g, "");
-          const modNameKey = modA.name.toLowerCase().replace(/\s+/g, "");
-          if (conflictKey === modNameKey) return true;
+        }
+        if (isNaN(Number(conf)) && modA.tag && conf === modA.tag) {
+          return true;
         }
       }
     }
@@ -360,10 +367,11 @@
           modItemLabel.appendChild(checkbox);
 
           const textSpan = document.createElement("span");
+          // Initially show only the mod name (conflict details appear when disabled)
           textSpan.textContent = mod.name;
           modItemLabel.appendChild(textSpan);
 
-          // Save reference for later updates
+          // Save reference to the text span for later updates
           checkbox.textSpan = textSpan;
 
           modsListContainer.appendChild(modItemLabel);
@@ -453,9 +461,11 @@
           }
         }
         try {
-          const response = await fetch(checkbox.value, { cache: "no-store" });
+          const response = await fetch(checkbox.value);
           if (!response.ok) {
-            throw new Error(`Network response was not ok for ${checkbox.value}`);
+            throw new Error(
+              `Network response was not ok for ${checkbox.value}`
+            );
           }
           const scriptContent = await response.text();
           const scriptEl = document.createElement("script");
@@ -465,7 +475,12 @@
             console.warn("Mod script warning:", e);
             console.error("Mod script error:", e);
             if (logDuration !== null) {
-              showNotification(`Error in script: ${checkbox.value}`, true, logDuration, allowInterupt);
+              showNotification(
+                `Error in script: ${checkbox.value}`,
+                true,
+                logDuration,
+                allowInterupt
+              );
             }
           };
           document.body.appendChild(scriptEl);
@@ -475,7 +490,12 @@
           console.warn(`Warning while loading ${checkbox.value}:`, error);
           console.error(`Failed to load ${checkbox.value}:`, error);
           if (logDuration !== null) {
-            showNotification(`Failed to load: ${checkbox.value}`, true, logDuration, allowInterupt);
+            showNotification(
+              `Failed to load: ${checkbox.value}`,
+              true,
+              logDuration,
+              allowInterupt
+            );
           }
         }
       }
@@ -491,7 +511,7 @@
   async function fetchModList(url) {
     try {
       showNotification("Fetching mod list...");
-      const response = await fetch(url, { cache: "no-store" });
+      const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`Failed to fetch: ${response.statusText}`);
       }
@@ -516,6 +536,7 @@
       const trimmed = line.trim();
       if (!trimmed) return;
       let modObj = null;
+      // Simple format: "modName <> modUrl"
       if (trimmed.includes("<>")) {
         const parts = trimmed.split("<>");
         if (parts.length >= 2) {
@@ -523,7 +544,9 @@
           const modUrl = parts[1].trim();
           modObj = { name: modName, url: modUrl, conflicts: [], tag: null };
         }
-      } else if (trimmed.includes("<") && trimmed.includes(">")) {
+      }
+      // Event tag format: "modName <event tags> modUrl"
+      else if (trimmed.includes("<") && trimmed.includes(">")) {
         const firstAngle = trimmed.indexOf("<");
         const lastAngle = trimmed.indexOf(">");
         if (firstAngle !== -1 && lastAngle !== -1 && lastAngle > firstAngle) {
@@ -565,7 +588,8 @@
     }
   }
 
-  // Run as soon as possible.
+  // Execute main as soon as possible. If document.body exists, run immediately;
+  // otherwise, wait for DOMContentLoaded.
   if (document.body) {
     main();
   } else {
