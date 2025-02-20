@@ -1,4 +1,4 @@
-># Usefull & Cool bookmarklets
+># Useful & Cool bookmarklets
 >### By Enderman-brewer
 
 ##### Do you love customizing your web experience with mods or extensions, but hate the hassle of manual installation? The Mod Loader is here to streamline the process and give you full control over your custom mods – all for free!
@@ -32,8 +32,16 @@ You can even use it for fun.
 
 
 Here's how you do it:
-1. Paste the contents of any of these files, such as the previously advertised [modloaderV3.js](/modloaderV3.js) to [this site using default settings](https://chriszarate.github.io/bookmarkleter/)
-2. Create the bookmarklet and put it in your bookmark bar
-3. Go to any website
-4. Click the bookmark
-5. Press `ESC` to deload the game/bookmarklet, or refresh the site to revert to the original site.
+* Pre-compiled:
+  1. Copy this code (this is the dynamic modloader)
+  ```javascript
+  javascript:void function(){(function(){function a(a,b=!1,c=2e3){const d=document.createElement("div");d.style.cssText=`            position: fixed;            top: 10px;            left: 10px;            background-color: rgba(0, 0, 0, 0.7);            color: white;            padding: 8px 12px;            border-radius: 5px;            z-index: 10001;            font-size: 14px;            opacity: 0;            transition: opacity 0.3s ease-in-out;        `,b%26%26(d.style.color="red"),d.textContent=a,document.body.appendChild(d),d.offsetHeight,d.style.opacity=1,setTimeout(()=>{d.style.opacity=0,setTimeout(()=>d.remove(),300)},c)}function b(b){fetch(b,{cache:"no-store"}).then(a=>{if(!a.ok)throw new Error("Failed to fetch "+b);return a.text()}).then(c=>{const d=document.createElement("script");d.textContent=c,document.body.appendChild(d),a(`Loaded: ${b}`)}).catch(c=>{console.error("Error loading mod:",c),a(`Failed to load: ${b}`,!0)})}(function(){a("Fetching mod list..."),fetch("https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/ModloaderDynamicLatestURL.txt",{cache:"no-store"}).then(a=>{if(!a.ok)throw new Error("Failed to fetch mod list");return a.text()}).then(c=>{const d=c.split("\n").map(a=>a.split("<>")).filter(a=>2===a.length);return 0===d.length%3Fvoid a("No valid mods found.",!0):void(a(`Loading ${d.length} mods...`),d.forEach(([a,c])=>b(c.trim())))}).catch(b=>{console.error("Error fetching mod list:",b),a("Error fetching mod list.",!0)})})()})()}();
+  ```
+  2. Save it as a bookmark.
+
+* Full manual
+  1. Paste the contents of any of these files, such as the previously advertised [modloaderV3.js](/modloaderV3.js) to [this site using default settings](https://chriszarate.github.io/bookmarkleter/)
+  2. Create the bookmarklet and put it in your bookmark bar
+  3. Go to any website
+  4. Click the bookmark
+  5. Press `ESC` to deload the game/bookmarklet, or refresh the site to revert to the original site.
