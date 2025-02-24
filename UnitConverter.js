@@ -19,7 +19,6 @@ const conversionRates = {
     "KateMetre": 0.656
 };
 
-
 function convertFromUnit(value, unit) {
     if (!conversionRates[unit]) {
         return "Invalid unit";
@@ -33,17 +32,21 @@ function convertFromUnit(value, unit) {
     return results;
 }
 
-// Example usage with alert popups
-const inputValue = prompt("Enter a value to convert (Please don't add unit):");
-const inputUnit = prompt("Enter the unit to convert from (e.g., metre, kilometre, fortwalk, etc.):");
+function runConversionScript() {
+    const inputValue = prompt("Enter a value to convert (Please don't add unit):");
+    const inputUnit = prompt("Enter the unit to convert from (e.g., metre, kilometre, fortwalk, etc.):");
 
-const conversions = convertFromUnit(parseFloat(inputValue), inputUnit);
-if (typeof conversions === "string") {
-    alert(conversions);
-} else {
-    let message = `${inputValue} ${inputUnit} is approximately:\n`;
-    for (let key in conversions) {
-        message += `${conversions[key]} ${key}\n`;
+    const conversions = convertFromUnit(parseFloat(inputValue), inputUnit);
+    if (typeof conversions === "string") {
+        alert(conversions);
+    } else {
+        let message = `${inputValue} ${inputUnit} is approximately:\n`;
+        for (let key in conversions) {
+            message += `${conversions[key]} ${key}\n`;
+        }
+        alert(message);
     }
-    alert(message);
 }
+
+// Call the function to run the conversion script
+runConversionScript();
