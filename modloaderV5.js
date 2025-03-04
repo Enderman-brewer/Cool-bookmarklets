@@ -508,7 +508,7 @@ async function i(){
         a("No valid mods found.", true);
     }
 }
-const j = "https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/bookmarkrequesturlV4.txt", // URL is V4 as requested
+const j = "https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/bookmarkrequesturlV5.txt", // URL is V4 as requested
       k = [];
 let l = false;
 let modLoaderUI = null;
