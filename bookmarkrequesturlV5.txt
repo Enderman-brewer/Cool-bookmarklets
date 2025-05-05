@@ -9,4 +9,4 @@ DEEP FRIED <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklet
 Audio Visuliser <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/AudioVisuliser.js
 Page Scrape <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/PageScrape.js
 Unit Converter V1.what <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/UnitConverter.js
-Modloader v3 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloaderV3.js
+Modloader v4 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloaderV4.js
