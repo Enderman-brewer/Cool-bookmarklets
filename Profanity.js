@@ -12,7 +12,7 @@ fetch("https://www.cs.cmu.edu/~biglou/resources/bad-words.txt")
     function walk(node) {
       if (node.nodeType === Node.TEXT_NODE) {
         censorTextNode(node);
-      } else if (node.nodeType === Node.ELEMENT_NODE && !['SCRIPT', 'STYLE', 'TEXTAREA'].includes(node.tagName)) {
+      } else if (node.nodeType === Node.ELEMENT_NODE && !['SCRIPT', 'STYLE', 'TEXTAREA'].includes(node.tagName) && node.tagName !== 'A') {
         for (const child of node.childNodes) walk(child);
       }
     }
@@ -24,7 +24,7 @@ fetch("https://www.cs.cmu.edu/~biglou/resources/bad-words.txt")
           mutation.addedNodes.forEach(node => {
             if (node.nodeType === Node.TEXT_NODE) {
               censorTextNode(node);
-            } else if (node.nodeType === Node.ELEMENT_NODE && !['SCRIPT', 'STYLE', 'TEXTAREA'].includes(node.tagName)) {
+            } else if (node.nodeType === Node.ELEMENT_NODE && !['SCRIPT', 'STYLE', 'TEXTAREA'].includes(node.tagName) && node.tagName !== 'A') {
               walk(node);
             }
           });
