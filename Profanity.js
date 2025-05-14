@@ -17,5 +17,27 @@ fetch("https://www.cs.cmu.edu/~biglou/resources/bad-words.txt")
       }
     }
 
+    // Function to observe new nodes being added
+    function observeDOM() {
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              censorTextNode(node);
+            } else if (node.nodeType === Node.ELEMENT_NODE && !['SCRIPT', 'STYLE', 'TEXTAREA'].includes(node.tagName)) {
+              walk(node);
+            }
+          });
+        });
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    }
+
+    // Start the initial censorship and the observer
     walk(document.body);
+    observeDOM();
   });
