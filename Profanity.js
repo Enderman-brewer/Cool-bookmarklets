@@ -1,4 +1,4 @@
-fetch("https://raw.githubusercontent.com/areebbeigh/profanityfilter/refs/heads/master/profanityfilter/data/badwords.txt")
+fetch("https://www.cs.cmu.edu/~biglou/resources/bad-words.txt")
   .then(res => res.text())
   .then(text => {
     const words = text.split("\n").filter(w => w.trim());
