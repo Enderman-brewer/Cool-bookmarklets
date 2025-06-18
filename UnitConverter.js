@@ -15,6 +15,10 @@
         doubleDeckerBus: 4.38,
         footballField: 100,
         lightYear: 9.461e15,
+        lightmonth = 7.77428473e14,
+        lightweek = 1.81314479e14,
+        lightday = 2.59020684e13,
+        lighthour = 1.07925285e12,
         doorheight: 2.04,
         PopCornSets: 0.4,
         KateMetre: 0.656
