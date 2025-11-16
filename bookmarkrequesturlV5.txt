@@ -11,4 +11,5 @@ Page Scrape <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarkle
 Unit Converter V1.what <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/UnitConverter.js
 Element Inspector <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/Inspect.js
 Profanity <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/Profanity.js
+Autoclicker <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/Autoclicker.js
 Modloader v4 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloaderV4.js
