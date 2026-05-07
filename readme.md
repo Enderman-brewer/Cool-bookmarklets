@@ -40,7 +40,7 @@ Here's how you do it:
   2. Save it as a bookmark.
 
 * Full manual
-  1. Paste the contents of any of these files, such as the previously advertised [modloaderV3.js](/modloaderV3.js) to [this site using default settings](https://chriszarate.github.io/bookmarkleter/)
+  1. Paste the contents of any of these files, such as the previously advertised [modloaderV5.js](/modloaderV5.js) to [this site using default settings](https://chriszarate.github.io/bookmarkleter/)
   2. Create the bookmarklet and put it in your bookmark bar
   3. Go to any website
   4. Click the bookmark
