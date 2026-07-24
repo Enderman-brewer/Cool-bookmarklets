@@ -11,4 +11,5 @@ Unit Converter V1.what <> https://raw.githubusercontent.com/Enderman-brewer/Cool
 Element Inspector <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/Inspect.js
 Profanity <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/Profanity.js
 Autoclicker <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/Autoclicker.js
+Spin <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/refs/heads/main/spin.py
 Modloader v4 <> https://raw.githubusercontent.com/Enderman-brewer/Cool-bookmarklets/main/modloaderV4.js
